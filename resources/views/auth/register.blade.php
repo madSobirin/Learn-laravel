@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register | Page</title>
     @vite('resources/css/app.css')
-
-
 </head>
 
 <body class="h-full">
@@ -29,10 +27,10 @@
                         Name</label>
                     <div class="mt-2">
                         <input id="name" type="text" name="name"
-                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 is-invalid @error('name') border border-red-500 @enderror "
+                            class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6 @error('name') border border-red-500 @enderror"
                             required placeholder="Enter your name" value="{{ old('name') }}" />
                         <!-- Pesan error -->
-                        @error('name')
+                        @error('email')
                             <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                         @enderror
                     </div>

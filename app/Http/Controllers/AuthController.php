@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    function showRegisterForm()
+    public function showRegisterForm()
     {
         return view('auth.register');
     }
@@ -41,15 +41,15 @@ class AuthController extends Controller
     // {
     //     return request()->all();
     // }
-    function showLoginForm()
+    public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    function login(Request $request)
+    public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email:dns'],
             'password' => ['required'],
         ]);
 
@@ -57,9 +57,13 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
+        return back()->with('loginError', 'Login failed!');
+        // dd('berhasil Login');
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+
+
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ]);
     }
 }

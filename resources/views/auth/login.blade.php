@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login | Page</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo1.png') }}">
     @vite('resources/css/app.css')
 
 
@@ -155,7 +156,7 @@
                         <label for="password" class="block text-sm/6 font-medium text-gray-100">Password</label>
                         <div class="text-sm">
                             {{-- <a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300">Forgot
-                                password?</a> 
+                                password?</a>
                         </div>
                     </div>
                     <div class="mt-2">

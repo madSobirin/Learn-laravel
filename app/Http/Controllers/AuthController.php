@@ -66,4 +66,18 @@ class AuthController extends Controller
         //     'email' => 'The provided credentials do not match our records.',
         // ]);
     }
+
+    public function logout(Request $request) {
+        // Hapus sesi login
+        auth()->logout();
+
+        // Hapus semua sesi
+        $request->session()->invalidate();
+
+        // Regenerasi token CSRF
+        $request->session()->regenerateToken();
+
+        // Redirect ke halaman login atau home
+        return redirect('/login');
+    }
 }

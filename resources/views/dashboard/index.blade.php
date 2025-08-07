@@ -1,3 +1,7 @@
 <x-layout>
-    <h1>Halo nama saya ahmad</h1>
+    <x-slot name="header">
+        <x-header :title="'Welcome back ' . auth()->user()->name" />
+    </x-slot>
+
+    <p>Isi Dashboard...</p>
 </x-layout>

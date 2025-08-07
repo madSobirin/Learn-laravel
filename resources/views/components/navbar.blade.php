@@ -3,21 +3,33 @@
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="shrink-0">
-                    <img src="img/logo1.png" alt="Your Company" class="size-8" />
+                    <img src="{{ asset('img/logo1.png') }}" alt="Your Company" class="size-8" />
+
+                    {{-- <img src="img/logo1.png" alt="Your Company" class="size-8" /> --}}
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="#" aria-current="page"
-                            class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
-                        <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                        <a href="#"
+                        <a href="/dashboard"
+                            class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium 
+    {{ request()->is('dashboard') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                            <x-heroicon-o-home class="w-5 h-5" />
+                            Dashboard
+                        </a>
+
+                        <a href="/dashboard/posts"
+                            class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium 
+    {{ request()->is('dashboard/posts') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                            <x-heroicon-o-document-text class="w-5 h-5" />
+                            My Posts
+                        </a>
+
+                        {{-- <a href="#"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
                         <a href="#"
                             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
                         <a href="#"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
+                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a> --}}
                     </div>
                 </div>
             </div>
@@ -75,16 +87,25 @@
     <el-disclosure id="mobile-menu" hidden class="block md:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" aria-current="page"
-                class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Dashboard</a>
-            <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-            <a href="#"
+            <a href="/dashboard"
+                class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium 
+    {{ request()->is('dashboard') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                <x-heroicon-o-home class="w-5 h-5" />
+                Dashboard
+            </a>
+
+            <a href="/dashboard/posts"
+                class="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium 
+    {{ request()->is('dashboard/posts') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">
+                <x-heroicon-o-document-text class="w-5 h-5" />
+                My Posts
+            </a>
+            {{-- <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
             <a href="#"
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
             <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a>
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Reports</a> --}}
         </div>
         <div class="border-t border-gray-700 pt-4 pb-3">
             <div class="flex items-center px-5">
@@ -93,8 +114,8 @@
                         alt="" class="size-10 rounded-full" />
                 </div>
                 <div class="ml-3">
-                    <div class="text-base/5 font-medium text-white">Tom Cook</div>
-                    <div class="text-sm font-medium text-gray-400">tom@example.com</div>
+                    <div class="text-base/5 font-medium text-white">{{ auth()->user()->name }}</div>
+                    <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
                 </div>
             </div>
             <div class="mt-3 space-y-1 px-2">

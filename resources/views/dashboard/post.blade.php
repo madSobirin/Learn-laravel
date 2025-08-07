@@ -29,7 +29,6 @@
                                     <a href="#"><x-heroicon-o-trash class="w-5 h-5 hover:text-amber-300" /></a>
                                 </div>
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>

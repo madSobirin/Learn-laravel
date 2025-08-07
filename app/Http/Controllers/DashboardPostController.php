@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardPostController extends Controller
 {
@@ -12,7 +13,14 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.post');
+        // return view('dashboard.post', [
+        //     // 'posts' => Post::where('user_id', auth()->user()->id)->get()
+        //     'posts' => Post::where('user_id', auth()->user()->id)->get()
+        // ]);
+        return view('dashboard.post', [
+            'posts' => Post::where('user_id', Auth::id())->get()
+        ]);
+
     }
 
     /**
@@ -36,7 +44,7 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return $post;
     }
 
     /**
